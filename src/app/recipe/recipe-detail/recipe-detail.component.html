@@ -1,23 +1,48 @@
-<div class="recipe-detail">
-  <h2>{{ recipe.nombre }}</h2>
-  <img
-    class="recipe-detail-img"
-    [src]="recipe.imagen"
-    alt="{{ recipe.imagen }}"
-  />
-  <p><strong>Porciones:</strong> {{ recipe.porciones }}</p>
-  <p><strong>Tiempo:</strong> {{ recipe.tiempo_minutos }} min</p>
-  <h3>Ingredientes</h3>
-  <app-ingredient-list
-    [ingredients]="recipe.ingredientes"
-  ></app-ingredient-list>
+<div class="container my-4" *ngIf="recipe">
 
-  <h3>Pasos</h3>
-  <ol>
-    @for(step of recipe.pasos; track step){
-    <li>
-      {{ step }}
-    </li>
-    }
-  </ol>
+  <!-- Botón para regresar al listado -->
+  <a class="btn btn-link mb-3" href="/recipe">
+    ← Volver al listado
+  </a>
+
+  <div class="card mb-4 shadow-sm">
+    <div class="row g-0">
+      <div class="col-md-4">
+        <img
+          [src]="recipe.imagen"  
+          class="img-fluid rounded-start h-100 w-100 object-fit-cover"
+          alt="{{ recipe.nombre }}"
+        >
+      </div>
+
+      <div class="col-md-8">
+        <div class="card-body">
+          <h3 class="card-title mb-3">{{ recipe.name }}</h3>
+
+          <p class="card-text">
+            {{ recipe.description }} 
+          </p>
+
+          <!-- Ejemplo de info adicional, ajusta a tu modelo -->
+          <p class="card-text text-muted mt-3">
+            Tiempo de preparación: {{ recipe.preparationTime }} min<br>
+            Porciones: {{ recipe.portions }}
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <h4 class="mb-3">Ingredientes</h4>
+
+  <!-- Listado de ingredientes SIN enrutamiento -->
+  <app-ingredient-list [ingredients]="recipe.ingredients"></app-ingredient-list>
+
+  <!-- Botón al final del detalle para regresar al listado -->
+  <div class="mt-4">
+    <a class="btn btn-secondary" href="/recipe">
+      Volver al listado
+    </a>
+  </div>
+
 </div>
