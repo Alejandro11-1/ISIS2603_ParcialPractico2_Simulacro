@@ -25,8 +25,11 @@
 
           <!-- Ejemplo de info adicional, ajusta a tu modelo -->
           <p class="card-text text-muted mt-3">
-            Tiempo de preparación: {{ recipe.preparationTime }} min<br>
-            Porciones: {{ recipe.portions }}
+            Tiempo de preparación: {{ recipe.tiempo_minutos }} min<br>
+            Porciones: {{ recipe.porciones }}<br>
+            Dificultad: {{ recipe.dificultad }}<br>
+            Tipo: {{ recipe.tipo }}
+
           </p>
         </div>
       </div>
@@ -37,6 +40,19 @@
 
   <!-- Listado de ingredientes SIN enrutamiento -->
   <app-ingredient-list [ingredients]="recipe.ingredients"></app-ingredient-list>
+  <h4 class="mb-3">Ingredientes</h4>
+
+<app-ingredient-list [ingredients]="recipe.ingredients"></app-ingredient-list>
+
+<!-- 🔹 Ingrediente con mayor cantidad -->
+<div class="mt-4" *ngIf="maxIngredient">
+  <h4>Ingrediente con mayor cantidad</h4>
+
+  <div class="alert alert-info">
+    {{ maxIngredient.nombre }}:
+    {{ maxIngredient.cantidad }} {{ maxIngredient.unidad }}
+  </div>
+</div>
 
   <!-- Botón al final del detalle para regresar al listado -->
   <div class="mt-4">

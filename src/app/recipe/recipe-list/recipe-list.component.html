@@ -16,9 +16,14 @@
           <h5 class="card-title">{{ recipe.nombre }}</h5>
           <!-- Descripción corta -->
           <p class="card-text text-muted flex-grow-1">
-            {{ recipe.porciones}}
+            {{ recipe.ingredientes}}
           </p>
-
+          <p class="card-text mb-1">
+            Ingredientes:
+            <span class="badge bg-info text-dark">
+              {{ recipe.ingredientes.length }}
+            </span>
+          </p>
           <!-- Botón que navega al detalle -->
           <a
             class="btn btn-primary mt-2 align-self-start"
